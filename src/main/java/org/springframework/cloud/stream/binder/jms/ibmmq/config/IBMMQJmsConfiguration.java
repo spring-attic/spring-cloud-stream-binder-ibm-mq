@@ -2,22 +2,21 @@ package org.springframework.cloud.stream.binder.jms.ibmmq.config;
 
 import javax.jms.ConnectionFactory;
 
+import com.ibm.mq.MQEnvironment;
+import com.ibm.mq.jms.MQConnectionFactory;
+import com.ibm.msg.client.wmq.WMQConstants;
+
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jms.JndiConnectionFactoryAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.stream.binder.jms.config.JmsBinderAutoConfiguration;
-import org.springframework.cloud.stream.binder.jms.config.JmsBinderConfigurationProperties;
 import org.springframework.cloud.stream.binder.jms.ibmmq.IBMMQProvisioningProvider;
 import org.springframework.cloud.stream.binder.jms.utils.DestinationNameResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.util.StringUtils;
-
-import com.ibm.mq.MQEnvironment;
-import com.ibm.mq.jms.MQConnectionFactory;
-import com.ibm.msg.client.wmq.WMQConstants;
 
 /**
  * IBM MQ specific configuration.
@@ -73,11 +72,10 @@ public class IBMMQJmsConfiguration {
 	@Bean
 	public IBMMQProvisioningProvider ibmMQQueueProvisioner(
 			MQConnectionFactory connectionFactory,
-			DestinationNameResolver destinationNameResolver,
-			JmsBinderConfigurationProperties jmsBinderConfigurationProperties)
+			DestinationNameResolver destinationNameResolver)
 			throws Exception {
 		return new IBMMQProvisioningProvider(connectionFactory, configurationProperties,
-				destinationNameResolver, jmsBinderConfigurationProperties);
+				destinationNameResolver);
 	}
 
 }

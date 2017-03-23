@@ -1,20 +1,18 @@
 package org.springframework.cloud.stream.binder.jms.ibmmq;
 
-import java.util.Map;
-
 import javax.jms.ConnectionFactory;
-
-import org.springframework.beans.factory.config.YamlMapFactoryBean;
-import org.springframework.cloud.stream.binder.jms.config.JmsBinderConfigurationProperties;
-import org.springframework.cloud.stream.binder.jms.ibmmq.config.IBMMQConfigurationProperties;
-import org.springframework.cloud.stream.binder.jms.ibmmq.config.IBMMQJmsConfiguration;
-import org.springframework.core.io.ClassPathResource;
+import java.util.Map;
 
 import com.ibm.mq.MQException;
 import com.ibm.mq.MQQueueManager;
 import com.ibm.mq.constants.MQConstants;
 import com.ibm.mq.pcf.PCFMessage;
 import com.ibm.mq.pcf.PCFMessageAgent;
+
+import org.springframework.beans.factory.config.YamlMapFactoryBean;
+import org.springframework.cloud.stream.binder.jms.ibmmq.config.IBMMQConfigurationProperties;
+import org.springframework.cloud.stream.binder.jms.ibmmq.config.IBMMQJmsConfiguration;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @author Donovan Muller
@@ -50,13 +48,12 @@ public class IBMMQTestUtils {
 				.connectionFactory(getIBMMQProperties());
 	}
 
-	public static void deprovisionDLQ() throws Exception {
+	public static void deprovisionDLQ(String deadLetterQueueName) throws Exception {
 		MQQueueManager queueManager = new MQQueueManager(
 				getIBMMQProperties().getQueueManager());
 		PCFMessageAgent pcfMessageAgent = new PCFMessageAgent(queueManager);
 
 		try {
-			String deadLetterQueueName = new JmsBinderConfigurationProperties().getDeadLetterQueueName();
 			PCFMessage request = new PCFMessage(MQConstants.MQCMD_CLEAR_Q);
 			request.addParameter(MQConstants.MQCA_Q_NAME, deadLetterQueueName);
 			pcfMessageAgent.send(request);
