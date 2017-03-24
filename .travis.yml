@@ -16,9 +16,6 @@ before_install:
   - docker cp local-mq8:/opt/mqm/java/lib/com.ibm.mq.pcf.jar .
   - mvn install:install-file -Dfile=com.ibm.mq.allclient.jar -DgroupId=com.ibm -DartifactId=com.ibm.mq.allclient -Dversion=8 -Dpackaging=jar
   - mvn install:install-file -Dfile=com.ibm.mq.pcf.jar -DgroupId=com.ibm -DartifactId=com.ibm.mq.pcf -Dversion=8 -Dpackaging=jar
-  # only need the below local build until the spring-cloud-stream-binder-jms project follows the usual Spring build process
-  - git clone https://github.com/spring-cloud/spring-cloud-stream-binder-jms.git /tmp/spring-cloud-stream-binder-jms
-  - (cd /tmp/spring-cloud-stream-binder-jms && exec /tmp/spring-cloud-stream-binder-jms/mvnw clean install -DskipTests)
 
 addons:
   hosts:
