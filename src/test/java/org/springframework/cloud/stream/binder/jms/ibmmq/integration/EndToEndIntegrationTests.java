@@ -52,6 +52,37 @@ public class EndToEndIntegrationTests extends
 		});
 	}
 
+	@Test
+	public void testListenMessageFromAQueue() throws Exception {
+
+		ReceiverApplication.Receiver receiver = createReceiver(
+				String.format(INPUT_DESTINATION_FORMAT, "AHMETBOM"),
+				String.format(INPUT_GROUP_FORMAT, "Q1")
+		);
+
+		final List<Message> messages = receiver.getHandledMessages();
+
+		messages.stream().forEach(System.out::println);
+	}
+
+	@Test
+	public void testSendHelloMessageFromAhmet() throws Exception {
+		final SenderApplication.Sender sender = createSender(
+				String.format(OUTPUT_DESTINATION_FORMAT, "AHMETBOM")
+		);
+
+		sender.send("This is hello from Ahmet");
+
+		ReceiverApplication.Receiver receiver = createReceiver(
+				String.format(INPUT_DESTINATION_FORMAT, "AHMETBOM"),
+				String.format(INPUT_GROUP_FORMAT, "Q1")
+		);
+
+		final List<Message> messages = receiver.getHandledMessages();
+
+		messages.stream().forEach(System.out::println);
+	}
+
 	@Override
 	protected void deprovisionDLQ() throws Exception {
 		IBMMQTestUtils.deprovisionDLQ(JmsConsumerProperties.DEFAULT_DLQ_NAME);
