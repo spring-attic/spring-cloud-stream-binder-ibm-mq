@@ -5,11 +5,31 @@ spring:
   # Necessary for org.springframework.cloud.stream.binder.jms.integration testing multiple ApplicationContexts.
   jmx:
     enabled: false
+  cloud:
+    stream:
+      bindings:
+        ibmmq:
+          default:
+            checkThisLater: somevalue # check JmsExtendedBindingProperties.DEFAULTS_PREFIX (but I do not know how to use this and why spring folks introduced this)
+        output:
+          contentType: text/plain
+          # application/x-java-serialized-object
+          # text/plain
+        input:
+          contentType: text/plain
+          # application/x-java-serialized-object
+          # text/plain
 
+          # check more https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/#spring-cloud-stream-preface-content-type-negotiation-improvements
+          # by default application/json
 ibmmq:
-  host: ibmmq
-  port: 1414
-  username: mq
-  password: mq
-  queueManager: LOCAL.DOCKER.QMGR
-  channel: PASSWORD.SVRCONN
+  host: localhost
+  port: 32768
+  username: intersystems
+  password: '1234'
+  queueManager: PCCHH01
+  channel: TEST.CHL.NOSSL
+
+
+
+
