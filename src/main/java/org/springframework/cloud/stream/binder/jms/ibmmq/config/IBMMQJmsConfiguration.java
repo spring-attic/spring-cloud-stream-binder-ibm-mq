@@ -42,7 +42,7 @@ public class IBMMQJmsConfiguration {
 	@Bean
 	public MQConnectionFactory connectionFactory(
 			IBMMQConfigurationProperties configurationProperties) throws Exception {
-		// see http://stackoverflow.com/a/33135633/2408961
+		// see https://stackoverflow.com/a/33135633/2408961
 		MQEnvironment.hostname = configurationProperties.getHost();
 		MQEnvironment.port = configurationProperties.getPort();
 		MQEnvironment.channel = configurationProperties.getChannel();

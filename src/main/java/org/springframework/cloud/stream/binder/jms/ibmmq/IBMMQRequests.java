@@ -32,7 +32,7 @@ public class IBMMQRequests {
 
 	/**
 	 * Thread safe (mostly). See
-	 * http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.javadoc.doc/WMQJavaClasses/com/ibm/mq/MQQueueManager.html
+	 * https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.javadoc.doc/WMQJavaClasses/com/ibm/mq/MQQueueManager.html
 	 */
 	private final MQQueueManager queueManager;
 
@@ -65,7 +65,7 @@ public class IBMMQRequests {
 		}
 		catch (MQException e) {
 			// see
-			// http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
+			// https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
 			if (e.getReason() != MQ_OBJECT_ALREADY_EXISTS) {
 				throw new RuntimeException(
 						String.format("Could not provision topic '%s'", topicName), e);
@@ -115,7 +115,7 @@ public class IBMMQRequests {
 		}
 		catch (MQException e) {
 			// see
-			// http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
+			// https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
 			if (e.getReason() != MQ_OBJECT_ALREADY_EXISTS) {
 				throw new RuntimeException(
 						String.format("Could not create queue '%s'", queueName), e);
@@ -166,7 +166,7 @@ public class IBMMQRequests {
 			}
 			catch (MQException e) {
 				// see
-				// http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
+				// https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.tro.doc/q048200_.htm
 				if (e.getReason() != MQ_SUBSCRIPTION_ALREADY_EXISTS
 						&& e.getReason() != MQ_OBJECT_ALREADY_EXISTS) {
 					throw new RuntimeException(

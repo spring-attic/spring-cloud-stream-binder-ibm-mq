@@ -7,9 +7,9 @@ This module provides provisioning functionality for IBM&reg; MQ&reg; 8.x+ as req
 ## How it works
 
 Using [PCF](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.0.1/com.ibm.mq.amqzag.doc/fa11570_.htm)
-commands, a [Topic](http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.pro.doc/q004990_.htm)
-is created for publishing messages. Receiving messages via consumer groups is implemented as [Subscriptions](http://www.ibm.com/support/knowledgecenter/SSFKSJ_7.5.0/com.ibm.mq.pla.doc/q004950_.htm)
-created and subscribed to the Topic, which are then configured to deliver messages to created [Queues](http://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.explorer.doc/e_queues.htm)
+commands, a [Topic](https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.pro.doc/q004990_.htm)
+is created for publishing messages. Receiving messages via consumer groups is implemented as [Subscriptions](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.5.0/com.ibm.mq.pla.doc/q004950_.htm)
+created and subscribed to the Topic, which are then configured to deliver messages to created [Queues](https://www.ibm.com/support/knowledgecenter/SSFKSJ_8.0.0/com.ibm.mq.explorer.doc/e_queues.htm)
 (named according to consumer group name) from which the messages are processed.
 
 ### Security constraints
