@@ -1,3 +1,6 @@
+# spring-cloud-stream-binder-ibm-mq is no longer actively maintained by VMware, Inc.
+
+
 # Spring Cloud Stream JMS Binder – IBM&reg; MQ&reg; Support [![Build Status](https://travis-ci.org/AbsaOSS/spring-cloud-stream-binder-ibm-mq.svg?branch=master)](https://travis-ci.org/AbsaOSS/spring-cloud-stream-binder-ibm-mq)
 
 This module provides provisioning functionality for IBM&reg; MQ&reg; 8.x+ as required by [spring-cloud-stream-binder-jms](https://github.com/spring-cloud/spring-cloud-stream-binder-jms).
